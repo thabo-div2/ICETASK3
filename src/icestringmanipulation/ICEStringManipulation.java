@@ -49,7 +49,7 @@ public class ICEStringManipulation
                     results += str.charAt(i);
                 }
             }
-            //add charX back to results 
+            //add charX back to results ICES
             results += charX;
             System.out.println(results);
             
@@ -57,6 +57,11 @@ public class ICEStringManipulation
         
 
         return results;
+    }
+    
+    public static String findMinMax(String sentence)
+    {
+        return "";
     }
     
 }
