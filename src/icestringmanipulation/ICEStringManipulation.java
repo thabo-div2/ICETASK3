@@ -4,8 +4,8 @@
  */
 package icestringmanipulation;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -21,6 +21,8 @@ public class ICEStringManipulation
        System.out.println(endX("xxre"));
        System.out.println(endX("xxhixx"));
        System.out.println(endX("xhixhix"));
+       findMinMax("This is a test string");
+       findMinMax("GeeksforGeeks A computer Science portal for Geeks");
 
     }
     
@@ -59,9 +61,39 @@ public class ICEStringManipulation
         return results;
     }
     
-    public static String findMinMax(String sentence)
+    
+    // Function to find the largest and smallest word in a sentence
+    public static void findMinMax(String sentence)
     {
-        return "";
+        Pattern pattern = Pattern.compile("\\b\\w+\\b");
+        Matcher matcher = pattern.matcher(sentence);
+        
+        String smallestWord= null;
+        String largestWord = null;
+    
+        
+        // Iterrate through the words in the string
+        while (matcher.find()) 
+        {
+            String currentWord = matcher.group();
+            
+            // Check for the smallest
+            if(smallestWord == null || currentWord.length() < smallestWord.length()) 
+            {
+                smallestWord = currentWord;
+            }
+            
+            // Check for the largest
+            if (largestWord == null || currentWord.length() > largestWord.length()) 
+            {
+                largestWord = currentWord;
+            }
+        }
+        
+        // Print the output
+        System.out.println("Input: " + sentence);
+        System.out.println("Smallest word: " + smallestWord);
+        System.out.println("Largest word: " + largestWord);
     }
     
 }
